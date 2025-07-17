@@ -1,4 +1,3 @@
-//Dependencias de cada ramo {ramos que deben estar aprobados para desbloquear este}
 const dependencias = {
   ingles2: ["ingles1"],
   discapacidad: ["compu1"],
@@ -26,22 +25,26 @@ const dependencias = {
   desarrollo: ["proyecto"],
   internado2: ["internado1"],
   ingles9: ["ingles8"],
-  ingles10: ["ingles9"],
+  ingles10: ["ingles9"]
 };
 
-// Inicializa cursos bloqueados
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".curso").forEach(curso => {
     curso.classList.add("bloqueado");
   });
 
-  // Primer ciclo desbloqueado
-  ["pensamiento", "comunicativas", "ods", "salud_publica", "ingles1", "compu1"].forEach(id => {
+  [
+    "pensamiento",
+    "comunicativas",
+    "ods",
+    "salud_publica",
+    "ingles1",
+    "compu1"
+  ].forEach(id => {
     desbloquear(id);
   });
 });
 
-// Click para aprobar/desaprobar
 document.querySelectorAll(".curso").forEach(curso => {
   curso.addEventListener("click", () => toggleCurso(curso.id));
 });
@@ -84,8 +87,7 @@ function bloquearDependientes(id) {
   for (const [curso, requisitos] of Object.entries(dependencias)) {
     if (requisitos.includes(id)) {
       bloquear(curso);
-      bloquearDependientes(curso); // cascada
+      bloquearDependientes(curso);
     }
   }
 }
-
