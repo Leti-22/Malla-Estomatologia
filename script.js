@@ -1,3 +1,4 @@
+// Dependencias de cada curso
 const dependencias = {
   ingles2: ["ingles1"],
   discapacidad: ["compu1"],
@@ -28,21 +29,23 @@ const dependencias = {
   ingles10: ["ingles9"],
 };
 
-// Inicializa
+// Al cargar la página
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".curso").forEach(curso => {
-    if (!curso.classList.contains("bloqueado")) {
-      curso.addEventListener("click", () => toggleCurso(curso.id));
-    }
+    curso.classList.add("bloqueado");
   });
 
-  // Desbloquear cursos sin prerrequisitos
-  const cursosConDependencias = new Set(Object.values(dependencias).flat());
-  document.querySelectorAll(".curso").forEach(curso => {
-    if (!cursosConDependencias.has(curso.id)) {
-      curso.classList.remove("bloqueado");
-    }
-  });
+  // Desbloquear automáticamente los cursos sin dependencias (sin prerrequisitos)
+  const todosIds = Array.from(document.querySelectorAll(".curso")).map(c => c.id);
+  const cursosConDependencias = new Set(Object.keys(dependencias));
+  const cursosSinDependencias = todosIds.filter(id => !cursosConDependencias.has(id));
+
+  cursosSinDependencias.forEach(id => desbloquear(id));
+});
+
+// Click para aprobar/desaprobar
+document.querySelectorAll(".curso").forEach(curso => {
+  curso.addEventListener("click", () => toggleCurso(curso.id));
 });
 
 function toggleCurso(id) {
@@ -58,26 +61,20 @@ function toggleCurso(id) {
   }
 }
 
-function desbloquear(cursoID) {
-  const curso = document.getElementById(cursoID);
-  if (curso && curso.classList.contains("bloqueado")) {
-    curso.classList.remove("bloqueado");
-    curso.addEventListener("click", () => toggleCurso(cursoID));
-  }
+function desbloquear(id) {
+  const curso = document.getElementById(id);
+  if (curso) curso.classList.remove("bloqueado");
 }
 
-function bloquear(cursoID) {
-  const curso = document.getElementById(cursoID);
-  if (curso && !curso.classList.contains("aprobado")) {
-    curso.classList.add("bloqueado");
-    curso.removeEventListener("click", () => toggleCurso(cursoID));
-  }
+function bloquear(id) {
+  const curso = document.getElementById(id);
+  if (curso && !curso.classList.contains("aprobado")) curso.classList.add("bloqueado");
 }
 
 function desbloquearDependientes(id) {
-  for (const [curso, prereqs] of Object.entries(dependencias)) {
-    if (prereqs.includes(id)) {
-      const puedeDesbloquear = prereqs.every(req =>
+  for (const [curso, requisitos] of Object.entries(dependencias)) {
+    if (requisitos.includes(id)) {
+      const puedeDesbloquear = requisitos.every(req =>
         document.getElementById(req).classList.contains("aprobado")
       );
       if (puedeDesbloquear) desbloquear(curso);
@@ -86,10 +83,10 @@ function desbloquearDependientes(id) {
 }
 
 function bloquearDependientes(id) {
-  for (const [curso, prereqs] of Object.entries(dependencias)) {
-    if (prereqs.includes(id)) {
+  for (const [curso, requisitos] of Object.entries(dependencias)) {
+    if (requisitos.includes(id)) {
       bloquear(curso);
-      bloquearDependientes(curso); // cascada
+      bloquearDependientes(curso); // en cascada
     }
   }
 }
