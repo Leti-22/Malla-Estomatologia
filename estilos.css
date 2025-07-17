@@ -1,9 +1,8 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #e6f7ff;
+  font-family: Arial, sans-serif;
+  background-color: #f5faff;
   color: #333;
   padding: 20px;
-  margin: 0;
 }
 
 h1 {
@@ -11,46 +10,41 @@ h1 {
   margin-bottom: 30px;
 }
 
-#malla {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+.ciclo {
+  margin-bottom: 40px;
+}
+
+.ciclo h2 {
+  color: #0077b6;
+  margin-bottom: 10px;
 }
 
 .curso {
-  border: 2px solid #a0d8ef;
-  padding: 15px 10px;
-  border-radius: 10px;
-  background-color: #cceeff;
-  width: 220px;
-  text-align: center;
-  transition: transform 0.2s;
+  background-color: #b3e5fc; /* Celeste pastel */
+  border: 2px solid #81d4fa;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px 0;
   cursor: pointer;
-  user-select: none;
-  opacity: 0.5;
-  pointer-events: none;
+  transition: 0.3s;
 }
 
-.curso.activo {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.curso.aprobado {
-  background-color: #88ccf1;
-  border-color: #55b7e6;
+.curso.especial {
+  background-color: #4fc3f7; /* Celeste oscuro para cursos con asterisco */
+  border-color: #0288d1;
   color: white;
 }
 
-.curso.asterisco {
-  background-color: #99d6ea;
+.curso.aprobado {
+  background-color: #b3e5fc;
+  opacity: 0.5;
+  pointer-events: auto;
 }
 
-.ciclo-titulo {
-  width: 100%;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-top: 40px;
-  text-align: left;
+.curso.bloqueado {
+  background-color: #e0e0e0;
+  border-color: #ccc;
+  color: #aaa;
+  cursor: not-allowed;
+  pointer-events: none;
 }
