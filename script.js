@@ -27,7 +27,28 @@ const dependencias = {
   internado2: ["internado1"],
   ingles9: ["ingles8"],
   ingles10: ["ingles9"],
+  // NUEVOS agregados para evitar desbloqueo erróneo:
+  biologia: ["biologia_dummy"],
+  morfofisiologia: ["morfo_dummy"],
+  farmacologia: ["farmaco_dummy"],
+  restauradora: ["resta_dummy"],
+  odontopediatria: ["odonto_dummy"],
+  estadistica: ["estad_dummy"],
+  proyecto: ["proyecto_dummy"],
+  internado1: ["internado_dummy"],
 };
+
+// Dummy nodes (no existen en el DOM, solo para prevenir desbloqueo automático)
+const cursosDummy = [
+  "biologia_dummy",
+  "morfo_dummy",
+  "farmaco_dummy",
+  "resta_dummy",
+  "odonto_dummy",
+  "estad_dummy",
+  "proyecto_dummy",
+  "internado_dummy"
+];
 
 // Al cargar la página
 window.addEventListener("DOMContentLoaded", () => {
@@ -35,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
     curso.classList.add("bloqueado");
   });
 
-  // Desbloquear automáticamente los cursos sin dependencias (sin prerrequisitos)
+  // Desbloquear automáticamente los cursos sin dependencias reales
   const todosIds = Array.from(document.querySelectorAll(".curso")).map(c => c.id);
   const cursosConDependencias = new Set(Object.keys(dependencias));
   const cursosSinDependencias = todosIds.filter(id => !cursosConDependencias.has(id));
@@ -75,7 +96,7 @@ function desbloquearDependientes(id) {
   for (const [curso, requisitos] of Object.entries(dependencias)) {
     if (requisitos.includes(id)) {
       const puedeDesbloquear = requisitos.every(req =>
-        document.getElementById(req).classList.contains("aprobado")
+        document.getElementById(req)?.classList.contains("aprobado")
       );
       if (puedeDesbloquear) desbloquear(curso);
     }
