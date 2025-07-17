@@ -1,88 +1,151 @@
 const cursos = [
-  { nombre: 'Pensamiento Lógico', ciclo: 1 },
-  { nombre: 'Habilidades Comunicativas', ciclo: 1 },
-  { nombre: 'Objetivos de Desarrollo Sostenible', ciclo: 1 },
-  { nombre: 'Introducción a la Salud Pública', ciclo: 1, importante: true },
-  { nombre: 'Inglés I', ciclo: 1, desbloquea: ['Inglés II'] },
-  { nombre: 'Computación I', ciclo: 1, desbloquea: ['Discapacidad y Educación en Salud', 'Computación II'] },
-
-  { nombre: 'Cambio Climático y Gestión de Riesgos', ciclo: 2 },
-  { nombre: 'Constitución y Derechos Humanos', ciclo: 2 },
-  { nombre: 'Cátedra Vallejo', ciclo: 2 },
-  { nombre: 'Discapacidad y Educación en Salud', ciclo: 2, importante: true, requiere: ['Computación I'] },
-  { nombre: 'Inglés II', ciclo: 2, desbloquea: ['Inglés III'], requiere: ['Inglés I'] },
-  { nombre: 'Computación II', ciclo: 2, desbloquea: ['Epidemiología', 'Computación III'], requiere: ['Computación I'] },
-
-  { nombre: 'Creatividad e Innovación', ciclo: 3 },
-  { nombre: 'Filosofía y Ética', ciclo: 3 },
-  { nombre: 'Epidemiología', ciclo: 3, importante: true, requiere: ['Computación II'] },
-  { nombre: 'Estadística y Análisis de Datos', ciclo: 3, desbloquea: ['Metodología de la Investigación Científica'] },
-  { nombre: 'Inglés III', ciclo: 3, desbloquea: ['Inglés IV'], requiere: ['Inglés II'] },
-  { nombre: 'Computación III', ciclo: 3, desbloquea: ['Patología General y Estomatológica'], requiere: ['Computación II'] },
-
-  { nombre: 'Metodología de la Investigación Científica', ciclo: 4, requiere: ['Estadística y Análisis de Datos'] },
-  { nombre: 'Biología Celular, Molecular y Bioquímica', ciclo: 4, importante: true, desbloquea: ['Microbiología General y Estomatológica'] },
-  { nombre: 'Morfofisiología Humana y Estomatológica', ciclo: 4, importante: true, desbloquea: ['Diagnostico y Radiología Estomatológica'] },
-  { nombre: 'Patología General y Estomatológica', ciclo: 4, importante: true, requiere: ['Computación III'] },
-  { nombre: 'Inglés IV', ciclo: 4, desbloquea: ['Inglés V'], requiere: ['Inglés III'] },
-
-  { nombre: 'Microbiología General y Estomatológica', ciclo: 5, importante: true, requiere: ['Biología Celular, Molecular y Bioquímica'] },
-  { nombre: 'Diagnostico y Radiología Estomatológica', ciclo: 5, importante: true, desbloquea: ['Clínica Integral del Adulto I'], requiere: ['Morfofisiología Humana y Estomatológica'] },
-  { nombre: 'Farmacología General y Estomatológica', ciclo: 5, importante: true, desbloquea: ['Cirugía Bucal I'] },
-  { nombre: 'Estomatología Restauradora y Oclusión', ciclo: 5, importante: true, desbloquea: ['Prótesis Fija'] },
-  { nombre: 'Inglés V', ciclo: 5, desbloquea: ['Inglés VI'], requiere: ['Inglés IV'] },
-
-  { nombre: 'Clínica Integral del Adulto I', ciclo: 6, importante: true, desbloquea: ['Clínica Integral del Adulto II'], requiere: ['Diagnostico y Radiología Estomatológica'] },
-  { nombre: 'Cirugía Bucal I', ciclo: 6, importante: true, desbloquea: ['Cirugía Bucal II'], requiere: ['Farmacología General y Estomatológica'] },
-  { nombre: 'Prótesis Fija', ciclo: 6, importante: true, desbloquea: ['Odontogeriatría'], requiere: ['Estomatología Restauradora y Oclusión'] },
-  { nombre: 'Experiencia Curricular Electiva', ciclo: 6 },
-  { nombre: 'Inglés VI', ciclo: 6, desbloquea: ['Inglés VII'], requiere: ['Inglés V'] },
-
-  { nombre: 'Clínica Integral del Adulto II', ciclo: 7, importante: true, requiere: ['Clínica Integral del Adulto I'] },
-  { nombre: 'Odontogeriatría', ciclo: 7, importante: true, desbloquea: ['Prótesis Parcial Removible'], requiere: ['Prótesis Fija'] },
-  { nombre: 'Cirugía Bucal II', ciclo: 7, importante: true, requiere: ['Cirugía Bucal I'] },
-  { nombre: 'Odontopediatría', ciclo: 7, importante: true, desbloquea: ['Clínica Integral del Niño'] },
-  { nombre: 'Inglés VII', ciclo: 7, desbloquea: ['Inglés VIII'], requiere: ['Inglés VI'] },
-
-  { nombre: 'Prótesis Parcial Removible', ciclo: 8, importante: true, requiere: ['Odontogeriatría'] },
-  { nombre: 'Clínica Integral del Niño', ciclo: 8, importante: true, requiere: ['Odontopediatría'] },
-  { nombre: 'Experiencia Curricular Electiva', ciclo: 8 },
-  { nombre: 'Gestión de Proyectos', ciclo: 8 },
-  { nombre: 'Inglés VIII', ciclo: 8, desbloquea: ['Inglés IX'], requiere: ['Inglés VII'] },
-
-  { nombre: 'Proyecto de Investigación', ciclo: 9, desbloquea: ['Desarrollo del Proyecto de Investigación'] },
-  { nombre: 'Internado I', ciclo: 9, importante: true, desbloquea: ['Internado II'] },
-  { nombre: 'Inglés IX', ciclo: 9, desbloquea: ['Inglés X'], requiere: ['Inglés VIII'] },
-
-  { nombre: 'Desarrollo del Proyecto de Investigación', ciclo: 10, requiere: ['Proyecto de Investigación'] },
-  { nombre: 'Internado II', ciclo: 10, importante: true, requiere: ['Internado I'] },
-  { nombre: 'Inglés X', ciclo: 10, requiere: ['Inglés IX'] },
+  {
+    ciclo: "Primer ciclo",
+    items: [
+      { nombre: "Pensamiento Lógico" },
+      { nombre: "Habilidades Comunicativas" },
+      { nombre: "Objetivos de Desarrollo Sostenible" },
+      { nombre: "Introducción a la Salud Pública", asterisco: true },
+      { nombre: "Inglés I", abre: ["Inglés II"] },
+      { nombre: "Computación I", abre: ["Discapacidad y Educación en Salud", "Computación II"] },
+    ]
+  },
+  {
+    ciclo: "Segundo ciclo",
+    items: [
+      { nombre: "Cambio Climático y Gestión de Riesgos" },
+      { nombre: "Constitución y Derechos Humanos" },
+      { nombre: "Cátedra Vallejo" },
+      { nombre: "Discapacidad y Educación en Salud", asterisco: true },
+      { nombre: "Inglés II", abre: ["Inglés III"] },
+      { nombre: "Computación II", abre: ["Epidemiología", "Computación III"] },
+    ]
+  },
+  {
+    ciclo: "Tercer ciclo",
+    items: [
+      { nombre: "Creatividad e Innovación" },
+      { nombre: "Filosofía y Ética" },
+      { nombre: "Epidemiología", asterisco: true },
+      { nombre: "Estadística y Análisis de Datos", abre: ["Metodología de la Investigación Científica"] },
+      { nombre: "Inglés III", abre: ["Inglés IV"] },
+      { nombre: "Computación III", abre: ["Patología General y Estomatológica"] },
+    ]
+  },
+  {
+    ciclo: "Cuarto ciclo",
+    items: [
+      { nombre: "Metodología de la Investigación Científica" },
+      { nombre: "Biología Celular, Molecular y Bioquímica", asterisco: true, abre: ["Microbiología General y Estomatológica"] },
+      { nombre: "Morfofisiología Humana y Estomatológica", asterisco: true, abre: ["Diagnostico y Radiología Estomatológica"] },
+      { nombre: "Patología General y Estomatológica", asterisco: true },
+      { nombre: "Inglés IV", abre: ["Inglés V"] },
+    ]
+  },
+  {
+    ciclo: "Quinto ciclo",
+    items: [
+      { nombre: "Microbiología General y Estomatológica", asterisco: true },
+      { nombre: "Diagnostico y Radiología Estomatológica", asterisco: true, abre: ["Clínica Integral del Adulto I"] },
+      { nombre: "Farmacología General y Estomatológica", asterisco: true, abre: ["Cirugía Bucal I"] },
+      { nombre: "Estomatología Restauradora y Oclusión", asterisco: true, abre: ["Prótesis Fija"] },
+      { nombre: "Inglés V", abre: ["Inglés VI"] },
+    ]
+  },
+  {
+    ciclo: "Sexto ciclo",
+    items: [
+      { nombre: "Clínica Integral del Adulto I", asterisco: true, abre: ["Clínica Integral del Adulto II"] },
+      { nombre: "Cirugía Bucal I", asterisco: true, abre: ["Cirugía Bucal II"] },
+      { nombre: "Prótesis Fija", asterisco: true, abre: ["Odontogeriatría"] },
+      { nombre: "Experiencia Curricular Electiva" },
+      { nombre: "Inglés VI", abre: ["Inglés VII"] },
+    ]
+  },
+  {
+    ciclo: "Séptimo ciclo",
+    items: [
+      { nombre: "Clínica Integral del Adulto II", asterisco: true },
+      { nombre: "Odontogeriatría", asterisco: true, abre: ["Prótesis Parcial Removible"] },
+      { nombre: "Cirugía Bucal II", asterisco: true },
+      { nombre: "Odontopediatría", asterisco: true, abre: ["Clínica Integral del Niño"] },
+      { nombre: "Inglés VII", abre: ["Inglés VIII"] },
+    ]
+  },
+  {
+    ciclo: "Octavo ciclo",
+    items: [
+      { nombre: "Prótesis Parcial Removible", asterisco: true },
+      { nombre: "Clínica Integral del Niño", asterisco: true },
+      { nombre: "Experiencia Curricular Electiva" },
+      { nombre: "Gestión de Proyectos" },
+      { nombre: "Inglés VIII", abre: ["Inglés IX"] },
+    ]
+  },
+  {
+    ciclo: "Noveno ciclo",
+    items: [
+      { nombre: "Proyecto de Investigación", abre: ["Desarrollo del Proyecto de Investigación"] },
+      { nombre: "Internado I", asterisco: true, abre: ["Internado II"] },
+      { nombre: "Inglés IX", abre: ["Inglés X"] },
+    ]
+  },
+  {
+    ciclo: "Décimo ciclo",
+    items: [
+      { nombre: "Desarrollo del Proyecto de Investigación" },
+      { nombre: "Internado II", asterisco: true },
+      { nombre: "Inglés X" },
+    ]
+  }
 ];
 
-const grid = document.getElementById("grid");
-const cursosActivos = new Set();
+const estadoCursos = new Map();
 
-function puedeActivarse(curso) {
-  if (!curso.requiere) return true;
-  return curso.requiere.every((r) => cursosActivos.has(r));
+function crearCurso(nombre, asterisco) {
+  const div = document.createElement("div");
+  div.classList.add("curso");
+  div.textContent = nombre;
+  if (asterisco) div.classList.add("asterisco");
+  div.addEventListener("click", () => aprobarCurso(nombre, div));
+  estadoCursos.set(nombre, { aprobado: false, elemento: div });
+  return div;
 }
 
-function renderCursos() {
-  grid.innerHTML = "";
-  cursos.forEach((curso) => {
-    const div = document.createElement("div");
-    div.className = "course";
-    if (curso.importante) div.classList.add("important");
-    if (!puedeActivarse(curso)) div.classList.add("locked");
-    if (cursosActivos.has(curso.nombre)) div.classList.add("active");
-    div.textContent = curso.nombre;
-    div.onclick = () => {
-      if (!puedeActivarse(curso)) return;
-      cursosActivos.add(curso.nombre);
-      renderCursos();
-    };
-    grid.appendChild(div);
+function aprobarCurso(nombre, div) {
+  if (estadoCursos.get(nombre).aprobado) return;
+  div.classList.add("aprobado");
+  estadoCursos.get(nombre).aprobado = true;
+
+  // Buscar qué cursos se desbloquean
+  for (const ciclo of cursos) {
+    for (const curso of ciclo.items) {
+      if (curso.abre && curso.abre.includes(nombre)) continue; // evitar clic por error
+      if (curso.nombre === nombre && curso.abre) {
+        for (const desbloqueado of curso.abre) {
+          const cursoDesbloqueado = estadoCursos.get(desbloqueado);
+          if (cursoDesbloqueado) {
+            cursoDesbloqueado.elemento.classList.add("activo");
+          }
+        }
+      }
+    }
+  }
+}
+
+function inicializarMalla() {
+  const contenedor = document.getElementById("malla");
+
+  cursos.forEach(ciclo => {
+    const titulo = document.createElement("div");
+    titulo.classList.add("ciclo-titulo");
+    titulo.textContent = ciclo.ciclo;
+    contenedor.appendChild(titulo);
+
+    ciclo.items.forEach(curso => {
+      const div = crearCurso(curso.nombre, curso.asterisco);
+      contenedor.appendChild(div);
+    });
   });
-}
 
-renderCursos();
+  // Activar cursos iniciales (primer ciclo
