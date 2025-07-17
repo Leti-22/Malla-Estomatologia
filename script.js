@@ -27,7 +27,8 @@ const dependencias = {
   internado2: ["internado1"],
   ingles9: ["ingles8"],
   ingles10: ["ingles9"],
-  // NUEVOS agregados para evitar desbloqueo erróneo:
+
+  // Dummies para prevenir desbloqueo automático
   biologia: ["biologia_dummy"],
   morfofisiologia: ["morfo_dummy"],
   farmacologia: ["farmaco_dummy"],
@@ -38,42 +39,38 @@ const dependencias = {
   internado1: ["internado_dummy"],
 };
 
-// Dummy nodes (no existen en el DOM, solo para prevenir desbloqueo automático)
+// Cursos dummy que no existen en el DOM
 const cursosDummy = [
-  "biologia_dummy",
-  "morfo_dummy",
-  "farmaco_dummy",
-  "resta_dummy",
-  "odonto_dummy",
-  "estad_dummy",
-  "proyecto_dummy",
-  "internado_dummy"
+  "biologia_dummy", "morfo_dummy", "farmaco_dummy", "resta_dummy",
+  "odonto_dummy", "estad_dummy", "proyecto_dummy", "internado_dummy"
 ];
 
-// Al cargar la página
 window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".curso").forEach(curso => {
-    curso.classList.add("bloqueado");
+  const todosLosCursos = document.querySelectorAll(".curso");
+
+  // Bloquear todos los cursos al inicio
+  todosLosCursos.forEach(curso => curso.classList.add("bloqueado"));
+
+  // Asignar eventos de clic
+  todosLosCursos.forEach(curso => {
+    curso.addEventListener("click", () => toggleCurso(curso.id));
   });
 
-  // Desbloquear automáticamente los cursos sin dependencias reales
-  const todosIds = Array.from(document.querySelectorAll(".curso")).map(c => c.id);
+  // Desbloquear cursos sin dependencias
+  const todosIds = Array.from(todosLosCursos).map(c => c.id);
   const cursosConDependencias = new Set(Object.keys(dependencias));
   const cursosSinDependencias = todosIds.filter(id => !cursosConDependencias.has(id));
 
   cursosSinDependencias.forEach(id => desbloquear(id));
 });
 
-// Click para aprobar/desaprobar
-document.querySelectorAll(".curso").forEach(curso => {
-  curso.addEventListener("click", () => toggleCurso(curso.id));
-});
-
 function toggleCurso(id) {
   const curso = document.getElementById(id);
-  const aprobado = curso.classList.contains("aprobado");
+  if (curso.classList.contains("bloqueado")) return;
 
-  if (aprobado) {
+  const estaAprobado = curso.classList.contains("aprobado");
+
+  if (estaAprobado) {
     curso.classList.remove("aprobado");
     bloquearDependientes(id);
   } else {
@@ -89,15 +86,18 @@ function desbloquear(id) {
 
 function bloquear(id) {
   const curso = document.getElementById(id);
-  if (curso && !curso.classList.contains("aprobado")) curso.classList.add("bloqueado");
+  if (curso && !curso.classList.contains("aprobado")) {
+    curso.classList.add("bloqueado");
+  }
 }
 
 function desbloquearDependientes(id) {
   for (const [curso, requisitos] of Object.entries(dependencias)) {
     if (requisitos.includes(id)) {
-      const puedeDesbloquear = requisitos.every(req =>
-        document.getElementById(req)?.classList.contains("aprobado")
-      );
+      const puedeDesbloquear = requisitos.every(req => {
+        const el = document.getElementById(req);
+        return el && el.classList.contains("aprobado");
+      });
       if (puedeDesbloquear) desbloquear(curso);
     }
   }
@@ -107,7 +107,7 @@ function bloquearDependientes(id) {
   for (const [curso, requisitos] of Object.entries(dependencias)) {
     if (requisitos.includes(id)) {
       bloquear(curso);
-      bloquearDependientes(curso); // en cascada
+      bloquearDependientes(curso); // Recursivo en cascada
     }
   }
 }
