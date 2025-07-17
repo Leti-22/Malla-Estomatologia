@@ -1,14 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Malla Interactiva</title>
-  <link rel="stylesheet" href="estilos.css" />
+  <link rel="stylesheet" href="estilos.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <h1>Malla Curricular Interactiva</h1>
-  <div id="malla"></div>
-  <script src="script.js"></script>
+  <h1>Malla Interactiva Odontología</h1>
+
+  <div class="ciclo">
+    <h2>Primer Ciclo</h2>
+    <div class="ramo" id="pensamiento" onclick="aprobar('pensamiento')">Pensamiento Lógico</div>
+    <div class="ramo" id="comunicacion" onclick="aprobar('comunicacion')">Habilidades Comunicativas</div>
+    <div class="ramo" id="ods" onclick="aprobar('ods')">Objetivos de Desarrollo Sostenible</div>
+    <div class="ramo destacado" id="saludpublica" onclick="aprobar('saludpublica')">*Introducción a la Salud Pública</div>
+    <div class="ramo" id="ingles1" onclick="aprobar('ingles1')">Inglés I</div>
+    <div class="ramo" id="computacion1" onclick="aprobar('computacion1')">Computación I</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Segundo Ciclo</h2>
+    <div class="ramo" id="cambioclimatico" onclick="aprobar('cambioclimatico')">Cambio Climático y Gestión de Riesgos</div>
+    <div class="ramo" id="constitucion" onclick="aprobar('constitucion')">Constitución y Derechos Humanos</div>
+    <div class="ramo" id="vallejo" onclick="aprobar('vallejo')">Cátedra Vallejo</div>
+    <div class="ramo destacado" id="discapacidad" onclick="aprobar('discapacidad')">*Discapacidad y Educación en Salud</div>
+    <div class="ramo" id="ingles2" onclick="aprobar('ingles2')">Inglés II</div>
+    <div class="ramo" id="computacion2" onclick="aprobar('computacion2')">Computación II</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Tercer Ciclo</h2>
+    <div class="ramo" id="creatividad" onclick="aprobar('creatividad')">Creatividad e Innovación</div>
+    <div class="ramo" id="etica" onclick="aprobar('etica')">Filosofía y Ética</div>
+    <div class="ramo destacado" id="epidemiologia" onclick="aprobar('epidemiologia')">*Epidemiología</div>
+    <div class="ramo" id="estadistica" onclick="aprobar('estadistica')">Estadística y Análisis de Datos</div>
+    <div class="ramo" id="ingles3" onclick="aprobar('ingles3')">Inglés III</div>
+    <div class="ramo" id="computacion3" onclick="aprobar('computacion3')">Computación III</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Cuarto Ciclo</h2>
+    <div class="ramo" id="metodologia" onclick="aprobar('metodologia')">Metodología de la Investigación Científica</div>
+    <div class="ramo destacado" id="biologia" onclick="aprobar('biologia')">*Biología Celular, Molecular y Bioquímica</div>
+    <div class="ramo destacado" id="morfofisiologia" onclick="aprobar('morfofisiologia')">*Morfofisiología Humana y Estomatológica</div>
+    <div class="ramo destacado" id="patologia" onclick="aprobar('patologia')">*Patología General y Estomatológica</div>
+    <div class="ramo" id="ingles4" onclick="aprobar('ingles4')">Inglés IV</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Quinto Ciclo</h2>
+    <div class="ramo destacado" id="microbiologia" onclick="aprobar('microbiologia')">*Microbiología General y Estomatológica</div>
+    <div class="ramo destacado" id="diagnostico" onclick="aprobar('diagnostico')">*Diagnóstico y Radiología Estomatológica</div>
+    <div class="ramo destacado" id="farmacologia" onclick="aprobar('farmacologia')">*Farmacología General y Estomatológica</div>
+    <div class="ramo destacado" id="restauradora" onclick="aprobar('restauradora')">*Estomatología Restauradora y Oclusión</div>
+    <div class="ramo" id="ingles5" onclick="aprobar('ingles5')">Inglés V</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Sexto Ciclo</h2>
+    <div class="ramo destacado" id="clinica1" onclick="aprobar('clinica1')">*Clínica Integral del Adulto I</div>
+    <div class="ramo destacado" id="cirugia1" onclick="aprobar('cirugia1')">*Cirugía Bucal I</div>
+    <div class="ramo destacado" id="protesisfija" onclick="aprobar('protesisfija')">*Prótesis Fija</div>
+    <div class="ramo" id="electiva1" onclick="aprobar('electiva1')">Experiencia Curricular Electiva</div>
+    <div class="ramo" id="ingles6" onclick="aprobar('ingles6')">Inglés VI</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Séptimo Ciclo</h2>
+    <div class="ramo destacado" id="clinica2" onclick="aprobar('clinica2')">*Clínica Integral del Adulto II</div>
+    <div class="ramo destacado" id="odontogeriatria" onclick="aprobar('odontogeriatria')">*Odontogeriatría</div>
+    <div class="ramo destacado" id="cirugia2" onclick="aprobar('cirugia2')">*Cirugía Bucal II</div>
+    <div class="ramo destacado" id="odontopediatria" onclick="aprobar('odontopediatria')">*Odontopediatría</div>
+    <div class="ramo" id="ingles7" onclick="aprobar('ingles7')">Inglés VII</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Octavo Ciclo</h2>
+    <div class="ramo destacado" id="protesisremovible" onclick="aprobar('protesisremovible')">*Prótesis Parcial Removible</div>
+    <div class="ramo destacado" id="clinicanino" onclick="aprobar('clinicanino')">*Clínica Integral del Niño</div>
+    <div class="ramo" id="electiva2" onclick="aprobar('electiva2')">Experiencia Curricular Electiva</div>
+    <div class="ramo" id="gestion" onclick="aprobar('gestion')">Gestión de Proyectos</div>
+    <div class="ramo" id="ingles8" onclick="aprobar('ingles8')">Inglés VIII</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Noveno Ciclo</h2>
+    <div class="ramo" id="proyecto" onclick="aprobar('proyecto')">Proyecto de Investigación</div>
+    <div class="ramo destacado" id="internado1" onclick="aprobar('internado1')">*Internado I</div>
+    <div class="ramo" id="ingles9" onclick="aprobar('ingles9')">Inglés IX</div>
+  </div>
+
+  <div class="ciclo">
+    <h2>Décimo Ciclo</h2>
+    <div class="ramo" id="desarrollo_proyecto" onclick="aprobar('desarrollo_proyecto')">Desarrollo del Proyecto de Investigación</div>
+    <div class="ramo destacado" id="internado2" onclick="aprobar('internado2')">*Internado II</div>
+    <div class="ramo" id="ingles10" onclick="aprobar('ingles10')">Inglés X</div>
+  </div>
+
 </body>
 </html>
