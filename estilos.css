@@ -1,77 +1,70 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f9fb;
-  padding: 20px;
+  background-color: #d0eaff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 2rem;
 }
 
-h1 {
+.titulo {
   text-align: center;
-  color: #48bfe3;
-  margin-bottom: 20px;
+  color: #003366;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
 }
 
 .contenedor-malla {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1rem;
 }
 
-.semestre {
-  min-width: 220px;
-  background-color: #ffeefc;
-  border: 2px solid #48bfe3;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.columna-ciclo {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.semestre h2 {
+.columna-ciclo h2 {
   text-align: center;
-  color: #48bfe3;
-  font-size: 1.1em;
-  margin-bottom: 12px;
-  border-bottom: 1px solid #a5d8ff;
-  padding-bottom: 6px;
+  color: #0077b6;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .ramo {
-  background: #caf0f8;
-  border: 1px solid #90e0ef;
+  background-color: #b3e5fc;
+  color: #003049;
   border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 8px;
-  text-align: center;
+  padding: 0.6rem;
+  margin-bottom: 0.6rem;
   cursor: pointer;
-  font-weight: bold;
-  color: #0077b6;
-  transition: all 0.3s ease;
+  transition: 0.2s;
+  text-align: center;
+  border: 1px solid #90caf9;
 }
 
 .ramo:hover {
-  background: #ade8f4;
-  transform: scale(1.02);
+  background-color: #81d4fa;
 }
 
-.ramo.asterisco {
-  background: #48cae4;
-  color: white;
+.destacado {
+  font-weight: bold;
+  color: #01497c;
+  background-color: #a8dadc;
+  border: 2px solid #457b9d;
 }
 
-.ramo.bloqueado {
-  background: #f3f3f3;
-  color: #aaa;
-  border-style: dashed;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.ramo.aprobado {
-  background: #dbeff2;
-  color: #4a4a4a;
-  border-color: #a0c4ff;
+.aprobado {
+  background-color: #a5d8ff;
+  opacity: 0.6;
   text-decoration: line-through;
   font-style: italic;
-  opacity: 0.6;
-  cursor: pointer;
+  pointer-events: none;
+}
+
+.bloqueado {
+  background-color: #e0e0e0;
+  color: #999;
+  pointer-events: none;
 }
