@@ -1,103 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla Interactiva Estomatología</title>
-  <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Malla Curricular Estomatología</title>
+  <link rel="stylesheet" href="estilos.css" />
 </head>
-  
 <body>
-  <h1>Malla Interactiva Estomatología</h1>
-  <div class="malla-grid">
-    <div class="ciclo" Id="cic1">
-      <h2>Primer Ciclo</h2>
-      <div class="ramo" id="pensamiento" onclick="aprobar('pensamiento')">Pensamiento Lógico</div>
-      <div class="ramo" id="comunicacion" onclick="aprobar('comunicacion')">Habilidades Comunicativas</div>
-      <div class="ramo" id="ods" onclick="aprobar('ods')">Objetivos de Desarrollo Sostenible</div>
-      <div class="ramo destacado" id="saludpublica" onclick="aprobar('saludpublica')">*Introducción a la Salud Pública</div>
-      <div class="ramo" id="ingles1" onclick="aprobar('ingles1')">Inglés I</div>
-      <div class="ramo" id="computacion1" onclick="aprobar('computacion1')">Computación I</div>
+  <h1>Malla Curricular de Estomatología</h1>
+  <div class="malla">
+
+    <!-- PRIMER CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 1</h2>
+      <div id="pensamiento" class="curso">Pensamiento Lógico</div>
+      <div id="comunicativas" class="curso">Habilidades Comunicativas</div>
+      <div id="ods" class="curso">Objetivos de Desarrollo Sostenible</div>
+      <div id="salud_publica" class="curso destacado">* Introducción a la Salud Pública</div>
+      <div id="ingles1" class="curso">Inglés I</div>
+      <div id="compu1" class="curso">Computación I</div>
     </div>
 
-    <div class="ciclo" Id="cic2">
-      <h2>Segundo Ciclo</h2>
-      <div class="ramo" id="cambioclimatico" onclick="aprobar('cambioclimatico')">Cambio Climático y Gestión de Riesgos</div>
-      <div class="ramo" id="constitucion" onclick="aprobar('constitucion')">Constitución y Derechos Humanos</div>
-      <div class="ramo" id="vallejo" onclick="aprobar('vallejo')">Cátedra Vallejo</div>
-      <div class="ramo destacado bloqueado" id="discapacidad" onclick="aprobar('discapacidad')">*Discapacidad y Educación en Salud</div>
-      <div class="ramo bloqueado" id="ingles2" onclick="aprobar('ingles2')">Inglés II</div>
-      <div class="ramo bloqueado" id="computacion2" onclick="aprobar('computacion2')">Computación II</div>
+    <!-- SEGUNDO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 2</h2>
+      <div id="cambio_climatico" class="curso bloqueado">Cambio Climático y Gestión de Riesgos</div>
+      <div id="constitucion" class="curso bloqueado">Constitución y Derechos Humanos</div>
+      <div id="vallejo" class="curso bloqueado">Cátedra Vallejo</div>
+      <div id="discapacidad" class="curso bloqueado destacado">* Discapacidad y Educación en Salud</div>
+      <div id="ingles2" class="curso bloqueado">Inglés II</div>
+      <div id="compu2" class="curso bloqueado">Computación II</div>
     </div>
 
-    <div class="ciclo" Id="cic3">
-      <h2>Tercer Ciclo</h2>
-      <div class="ramo" id="creatividad" onclick="aprobar('creatividad')">Creatividad e Innovación</div>
-      <div class="ramo" id="etica" onclick="aprobar('etica')">Filosofía y Ética</div>
-      <div class="ramo destacado bloqueado" id="epidemiologia" onclick="aprobar('epidemiologia')">*Epidemiología</div>
-      <div class="ramo" id="estadistica" onclick="aprobar('estadistica')">Estadística y Análisis de Datos</div>
-      <div class="ramo bloqueado" id="ingles3" onclick="aprobar('ingles3')">Inglés III</div>
-      <div class="ramo bloqueado" id="computacion3" onclick="aprobar('computacion3')">Computación III</div>
+    <!-- TERCER CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 3</h2>
+      <div id="creatividad" class="curso bloqueado">Creatividad e Innovación</div>
+      <div id="filosofia" class="curso bloqueado">Filosofía y Ética</div>
+      <div id="epidemiologia" class="curso bloqueado destacado">* Epidemiología</div>
+      <div id="estadistica" class="curso bloqueado">Estadística y Análisis de Datos</div>
+      <div id="ingles3" class="curso bloqueado">Inglés III</div>
+      <div id="compu3" class="curso bloqueado">Computación III</div>
     </div>
 
-    <div class="ciclo" Id="cic4">
-      <h2>Cuarto Ciclo</h2>
-      <div class="ramo bloqueado" id="metodologia" onclick="aprobar('metodologia')">Metodología de la Investigación Científica</div>
-      <div class="ramo destacado" id="biologia" onclick="aprobar('biologia')">*Biología Celular, Molecular y Bioquímica</div>
-      <div class="ramo destacado" id="morfofisiologia" onclick="aprobar('morfofisiologia')">*Morfofisiología Humana y Estomatológica</div>
-      <div class="ramo destacado bloqueado" id="patologia" onclick="aprobar('patologia')">*Patología General y Estomatológica</div>
-      <div class="ramo bloqueado" id="ingles4" onclick="aprobar('ingles4')">Inglés IV</div>
+    <!-- CUARTO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 4</h2>
+      <div id="metodologia" class="curso bloqueado">Metodología de la Investigación Científica</div>
+      <div id="biologia" class="curso bloqueado destacado">* Biología Celular, Molecular y Bioquímica</div>
+      <div id="morfofisiologia" class="curso bloqueado destacado">* Morfofisiología Humana y Estomatológica</div>
+      <div id="patologia" class="curso bloqueado destacado">* Patología General y Estomatológica</div>
+      <div id="ingles4" class="curso bloqueado">Inglés IV</div>
     </div>
-  
-    <div class="ciclo" Id="cic5">
-      <h2>Quinto Ciclo</h2>
-      <div class="ramo destacado bloqueado" id="microbiologia" onclick="aprobar('microbiologia')">*Microbiología General y Estomatológica</div>
-      <div class="ramo destacado bloqueado" id="diagnostico" onclick="aprobar('diagnostico')">*Diagnóstico y Radiología Estomatológica</div>
-      <div class="ramo destacado" id="farmacologia" onclick="aprobar('farmacologia')">*Farmacología General y Estomatológica</div>
-      <div class="ramo destacado" id="restauradora" onclick="aprobar('restauradora')">*Estomatología Restauradora y Oclusión</div>
-      <div class="ramo bloqueado" id="ingles5" onclick="aprobar('ingles5')">Inglés V</div>
-    </div>
-  
-    <div class="ciclo" Id="cic6">
-      <h2>Sexto Ciclo</h2>
-      <div class="ramo destacado bloqueado" id="clinica1" onclick="aprobar('clinica1')">*Clínica Integral del Adulto I</div>
-      <div class="ramo destacado bloqueado" id="cirugia1" onclick="aprobar('cirugia1')">*Cirugía Bucal I</div>
-      <div class="ramo destacado bloqueado" id="protesisfija" onclick="aprobar('protesisfija')">*Prótesis Fija</div>
-      <div class="ramo" id="electiva1" onclick="aprobar('electiva1')">Experiencia Curricular Electiva</div>
-      <div class="ramo bloqueado" id="ingles6" onclick="aprobar('ingles6')">Inglés VI</div>
-    </div>
-  
-    <div class="ciclo" Id="cic7">
-      <h2>Séptimo Ciclo</h2>
-      <div class="ramo destacado bloqueado" id="clinica2" onclick="aprobar('clinica2')">*Clínica Integral del Adulto II</div>
-      <div class="ramo destacado bloqueado" id="odontogeriatria" onclick="aprobar('odontogeriatria')">*Odontogeriatría</div>
-      <div class="ramo destacado bloqueado" id="cirugia2" onclick="aprobar('cirugia2')">*Cirugía Bucal II</div>
-      <div class="ramo destacado" id="odontopediatria" onclick="aprobar('odontopediatria')">*Odontopediatría</div>
-      <div class="ramo bloqueado" id="ingles7" onclick="aprobar('ingles7')">Inglés VII</div>
-    </div>
-  
-    <div class="ciclo" Id="cic8">
-      <h2>Octavo Ciclo</h2>
-      <div class="ramo destacado bloqueado" id="protesisremovible" onclick="aprobar('protesisremovible')">*Prótesis Parcial Removible</div>
-      <div class="ramo destacado bloqueado" id="clinicanino" onclick="aprobar('clinicanino')">*Clínica Integral del Niño</div>
-      <div class="ramo" id="electiva2" onclick="aprobar('electiva2')">Experiencia Curricular Electiva</div>
-      <div class="ramo" id="gestion" onclick="aprobar('gestion')">Gestión de Proyectos</div>
-      <div class="ramo bloqueado" id="ingles8" onclick="aprobar('ingles8')">Inglés VIII</div>
-    </div>
-  
-    <div class="ciclo" Id="cic9">
-      <h2>Noveno Ciclo</h2>
-      <div class="ramo" id="proyecto" onclick="aprobar('proyecto')">Proyecto de Investigación</div>
-      <div class="ramo destacado" id="internado1" onclick="aprobar('internado1')">*Internado I</div>
-      <div class="ramo bloqueado" id="ingles9" onclick="aprobar('ingles9')">Inglés IX</div>
-    </div>
-  
-    <div class="ciclo" Id="cic10">
-      <h2>Décimo Ciclo</h2>
-      <div class="ramo bloqueado" id="desarrollo_proyecto" onclick="aprobar('desarrollo_proyecto')">Desarrollo del Proyecto de Investigación</div>
-      <div class="ramo destacado bloqueado" id="internado2" onclick="aprobar('internado2')">*Internado II</div>
-      <div class="ramo bloqueado" id="ingles10" onclick="aprobar('ingles10')">Inglés X</div>
+    
+    <!-- QUINTO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 5</h2>
+      <div id="microbiologia" class="curso bloqueado destacado">* Microbiología General y Estomatológica</div>
+      <div id="diagnostico" class="curso bloqueado destacado">* Diagnóstico y Radiología Estomatológica</div>
+      <div id="farmacologia" class="curso bloqueado destacado">* Farmacología General y Estomatológica</div>
+      <div id="restauradora" class="curso bloqueado destacado">* Estomatología Restauradora y Oclusión</div>
+      <div id="ingles5" class="curso bloqueado">Inglés V</div>
     </div>
 
+    <!-- SEXTO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 6</h2>
+      <div id="clinica1" class="curso bloqueado destacado">* Clínica Integral del Adulto I</div>
+      <div id="cirugia1" class="curso bloqueado destacado">* Cirugía Bucal I</div>
+      <div id="protesis" class="curso bloqueado destacado">* Prótesis Fija</div>
+      <div id="electiva1" class="curso bloqueado">Experiencia Curricular Electiva</div>
+      <div id="ingles6" class="curso bloqueado">Inglés VI</div>
+    </div>
+
+    <!-- SÉPTIMO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 7</h2>
+      <div id="clinica2" class="curso bloqueado destacado">* Clínica Integral del Adulto II</div>
+      <div id="odontogeriatria" class="curso bloqueado destacado">* Odontogeriatría</div>
+      <div id="cirugia2" class="curso bloqueado destacado">* Cirugía Bucal II</div>
+      <div id="odontopediatria" class="curso bloqueado destacado">* Odontopediatría</div>
+      <div id="ingles7" class="curso bloqueado">Inglés VII</div>
+    </div>
+
+    <!-- OCTAVO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 8</h2>
+      <div id="protesis_rem" class="curso bloqueado destacado">* Prótesis Parcial Removible</div>
+      <div id="clinica_nino" class="curso bloqueado destacado">* Clínica Integral del Niño</div>
+      <div id="electiva2" class="curso bloqueado">Experiencia Curricular Electiva</div>
+      <div id="gestion" class="curso bloqueado">Gestión de Proyectos</div>
+      <div id="ingles8" class="curso bloqueado">Inglés VIII</div>
+    </div>
+
+    <!-- NOVENO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 9</h2>
+      <div id="proyecto" class="curso bloqueado">Proyecto de Investigación</div>
+      <div id="internado1" class="curso bloqueado destacado">* Internado I</div>
+      <div id="ingles9" class="curso bloqueado">Inglés IX</div>
+    </div>
+
+    <!-- DÉCIMO CICLO -->
+    <div class="ciclo">
+      <h2>Ciclo 10</h2>
+      <div id="desarrollo" class="curso bloqueado">Desarrollo del Proyecto de Investigación</div>
+      <div id="internado2" class="curso bloqueado destacado">* Internado II</div>
+      <div id="ingles10" class="curso bloqueado">Inglés X</div>
+    </div>
+
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
