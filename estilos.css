@@ -69,25 +69,25 @@ h1 {
   color: #5c5c5c;
 }
 
+/* Estilo para todos los bloqueados */
 .curso.bloqueado {
   pointer-events: none;
   background-color: #eeeeee;
   color: #aaaaaa;
   border: 1.5px solid #dddddd;
+  opacity: 0.6;
 }
 
-/* Cursos destacados (normal) */
+/* Estilo específico para cursos destacados (con asterisco) */
 .curso.destacado {
   background-color: #7ed2ec;
   font-weight: bold;
   color: #003f5c;
 }
 
-/* Cursos destacados bloqueados */
+/* Cuando el curso es destacado Y está bloqueado, que se vea diferente */
 .curso.destacado.bloqueado {
-  background-color: #d4edf5;
-  color: #888888;
-  opacity: 0.5;
-  pointer-events: none;
-  border: 1.5px solid #cccccc;
+  background-color: #f8d6e6;
+  color: #a45787;
+  opacity: 0.6;
 }
