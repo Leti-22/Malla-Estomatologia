@@ -1,151 +1,90 @@
-const cursos = [
-  {
-    ciclo: "Primer ciclo",
-    items: [
-      { nombre: "Pensamiento Lógico" },
-      { nombre: "Habilidades Comunicativas" },
-      { nombre: "Objetivos de Desarrollo Sostenible" },
-      { nombre: "Introducción a la Salud Pública", asterisco: true },
-      { nombre: "Inglés I", abre: ["Inglés II"] },
-      { nombre: "Computación I", abre: ["Discapacidad y Educación en Salud", "Computación II"] },
-    ]
-  },
-  {
-    ciclo: "Segundo ciclo",
-    items: [
-      { nombre: "Cambio Climático y Gestión de Riesgos" },
-      { nombre: "Constitución y Derechos Humanos" },
-      { nombre: "Cátedra Vallejo" },
-      { nombre: "Discapacidad y Educación en Salud", asterisco: true },
-      { nombre: "Inglés II", abre: ["Inglés III"] },
-      { nombre: "Computación II", abre: ["Epidemiología", "Computación III"] },
-    ]
-  },
-  {
-    ciclo: "Tercer ciclo",
-    items: [
-      { nombre: "Creatividad e Innovación" },
-      { nombre: "Filosofía y Ética" },
-      { nombre: "Epidemiología", asterisco: true },
-      { nombre: "Estadística y Análisis de Datos", abre: ["Metodología de la Investigación Científica"] },
-      { nombre: "Inglés III", abre: ["Inglés IV"] },
-      { nombre: "Computación III", abre: ["Patología General y Estomatológica"] },
-    ]
-  },
-  {
-    ciclo: "Cuarto ciclo",
-    items: [
-      { nombre: "Metodología de la Investigación Científica" },
-      { nombre: "Biología Celular, Molecular y Bioquímica", asterisco: true, abre: ["Microbiología General y Estomatológica"] },
-      { nombre: "Morfofisiología Humana y Estomatológica", asterisco: true, abre: ["Diagnostico y Radiología Estomatológica"] },
-      { nombre: "Patología General y Estomatológica", asterisco: true },
-      { nombre: "Inglés IV", abre: ["Inglés V"] },
-    ]
-  },
-  {
-    ciclo: "Quinto ciclo",
-    items: [
-      { nombre: "Microbiología General y Estomatológica", asterisco: true },
-      { nombre: "Diagnostico y Radiología Estomatológica", asterisco: true, abre: ["Clínica Integral del Adulto I"] },
-      { nombre: "Farmacología General y Estomatológica", asterisco: true, abre: ["Cirugía Bucal I"] },
-      { nombre: "Estomatología Restauradora y Oclusión", asterisco: true, abre: ["Prótesis Fija"] },
-      { nombre: "Inglés V", abre: ["Inglés VI"] },
-    ]
-  },
-  {
-    ciclo: "Sexto ciclo",
-    items: [
-      { nombre: "Clínica Integral del Adulto I", asterisco: true, abre: ["Clínica Integral del Adulto II"] },
-      { nombre: "Cirugía Bucal I", asterisco: true, abre: ["Cirugía Bucal II"] },
-      { nombre: "Prótesis Fija", asterisco: true, abre: ["Odontogeriatría"] },
-      { nombre: "Experiencia Curricular Electiva" },
-      { nombre: "Inglés VI", abre: ["Inglés VII"] },
-    ]
-  },
-  {
-    ciclo: "Séptimo ciclo",
-    items: [
-      { nombre: "Clínica Integral del Adulto II", asterisco: true },
-      { nombre: "Odontogeriatría", asterisco: true, abre: ["Prótesis Parcial Removible"] },
-      { nombre: "Cirugía Bucal II", asterisco: true },
-      { nombre: "Odontopediatría", asterisco: true, abre: ["Clínica Integral del Niño"] },
-      { nombre: "Inglés VII", abre: ["Inglés VIII"] },
-    ]
-  },
-  {
-    ciclo: "Octavo ciclo",
-    items: [
-      { nombre: "Prótesis Parcial Removible", asterisco: true },
-      { nombre: "Clínica Integral del Niño", asterisco: true },
-      { nombre: "Experiencia Curricular Electiva" },
-      { nombre: "Gestión de Proyectos" },
-      { nombre: "Inglés VIII", abre: ["Inglés IX"] },
-    ]
-  },
-  {
-    ciclo: "Noveno ciclo",
-    items: [
-      { nombre: "Proyecto de Investigación", abre: ["Desarrollo del Proyecto de Investigación"] },
-      { nombre: "Internado I", asterisco: true, abre: ["Internado II"] },
-      { nombre: "Inglés IX", abre: ["Inglés X"] },
-    ]
-  },
-  {
-    ciclo: "Décimo ciclo",
-    items: [
-      { nombre: "Desarrollo del Proyecto de Investigación" },
-      { nombre: "Internado II", asterisco: true },
-      { nombre: "Inglés X" },
-    ]
+const dependencias = {
+  ingles2: ["ingles1"],
+  discapacidad: ["compu1"],
+  compu2: ["compu1"],
+  ingles3: ["ingles2"],
+  epidemiologia: ["compu2"],
+  compu3: ["compu2"],
+  metodologia: ["estadistica"],
+  ingles4: ["ingles3"],
+  patologia: ["compu3"],
+  microbiologia: ["biologia"],
+  diagnostico: ["morfofisiologia"],
+  clinica1: ["diagnostico"],
+  cirugia1: ["farmacologia"],
+  protesis: ["restauradora"],
+  ingles5: ["ingles4"],
+  clinica2: ["clinica1"],
+  cirugia2: ["cirugia1"],
+  odontogeriatria: ["protesis"],
+  ingles6: ["ingles5"],
+  protesis_rem: ["odontogeriatria"],
+  clinica_nino: ["odontopediatria"],
+  ingles7: ["ingles6"],
+  ingles8: ["ingles7"],
+  desarrollo: ["proyecto"],
+  internado2: ["internado1"],
+  ingles9: ["ingles8"],
+  ingles10: ["ingles9"],
+};
+
+// Inicializa cursos bloqueados
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".curso").forEach(curso => {
+    curso.classList.add("bloqueado");
+  });
+
+  // Primer ciclo desbloqueado
+  ["pensamiento", "comunicativas", "ods", "salud_publica", "ingles1", "compu1"].forEach(id => {
+    desbloquear(id);
+  });
+});
+
+// Click para aprobar/desaprobar
+document.querySelectorAll(".curso").forEach(curso => {
+  curso.addEventListener("click", () => toggleCurso(curso.id));
+});
+
+function toggleCurso(id) {
+  const curso = document.getElementById(id);
+  const aprobado = curso.classList.contains("aprobado");
+
+  if (aprobado) {
+    curso.classList.remove("aprobado");
+    bloquearDependientes(id);
+  } else {
+    curso.classList.add("aprobado");
+    desbloquearDependientes(id);
   }
-];
-
-const estadoCursos = new Map();
-
-function crearCurso(nombre, asterisco) {
-  const div = document.createElement("div");
-  div.classList.add("curso");
-  div.textContent = nombre;
-  if (asterisco) div.classList.add("asterisco");
-  div.addEventListener("click", () => aprobarCurso(nombre, div));
-  estadoCursos.set(nombre, { aprobado: false, elemento: div });
-  return div;
 }
 
-function aprobarCurso(nombre, div) {
-  if (estadoCursos.get(nombre).aprobado) return;
-  div.classList.add("aprobado");
-  estadoCursos.get(nombre).aprobado = true;
+function desbloquear(id) {
+  const curso = document.getElementById(id);
+  if (curso) curso.classList.remove("bloqueado");
+}
 
-  // Buscar qué cursos se desbloquean
-  for (const ciclo of cursos) {
-    for (const curso of ciclo.items) {
-      if (curso.abre && curso.abre.includes(nombre)) continue; // evitar clic por error
-      if (curso.nombre === nombre && curso.abre) {
-        for (const desbloqueado of curso.abre) {
-          const cursoDesbloqueado = estadoCursos.get(desbloqueado);
-          if (cursoDesbloqueado) {
-            cursoDesbloqueado.elemento.classList.add("activo");
-          }
-        }
-      }
+function bloquear(id) {
+  const curso = document.getElementById(id);
+  if (curso && !curso.classList.contains("aprobado")) curso.classList.add("bloqueado");
+}
+
+function desbloquearDependientes(id) {
+  for (const [curso, requisitos] of Object.entries(dependencias)) {
+    if (requisitos.includes(id)) {
+      const puedeDesbloquear = requisitos.every(req =>
+        document.getElementById(req).classList.contains("aprobado")
+      );
+      if (puedeDesbloquear) desbloquear(curso);
     }
   }
 }
 
-function inicializarMalla() {
-  const contenedor = document.getElementById("malla");
+function bloquearDependientes(id) {
+  for (const [curso, requisitos] of Object.entries(dependencias)) {
+    if (requisitos.includes(id)) {
+      bloquear(curso);
+      bloquearDependientes(curso); // cascada
+    }
+  }
+}
 
-  cursos.forEach(ciclo => {
-    const titulo = document.createElement("div");
-    titulo.classList.add("ciclo-titulo");
-    titulo.textContent = ciclo.ciclo;
-    contenedor.appendChild(titulo);
-
-    ciclo.items.forEach(curso => {
-      const div = crearCurso(curso.nombre, curso.asterisco);
-      contenedor.appendChild(div);
-    });
-  });
-
-  // Activar cursos iniciales (primer ciclo
