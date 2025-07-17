@@ -1,3 +1,4 @@
+//Dependencias de cada ramo {ramos que deben estar aprobados para desbloquear este}
 const dependencias = {
   ingles2: ["ingles1"],
   discapacidad: ["compu1"],
