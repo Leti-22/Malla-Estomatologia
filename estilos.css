@@ -1,93 +1,85 @@
-body { 
+body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f3f8ff;
+  background-color: #fdfaff;
   color: #333;
 }
 
 h1 {
   text-align: center;
-  margin-top: 20px;
-  font-size: 2em;
-  color: #d66aa0;
+  margin: 25px;
+  font-size: 2.4em;
+  color: #d75089;
 }
 
 .malla {
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  padding: 20px;
   gap: 20px;
-  justify-content: flex-start;
+  overflow-x: auto;
+  padding: 30px;
 }
 
 .ciclo {
-  background-color: #fff;
-  border: 2px solid #e0e0e0;
-  border-radius: 20px;
-  min-width: 220px;
+  background-color: #ffffff;
+  border: 2px solid #f4d9eb;
+  border-radius: 25px;
+  min-width: 250px;
   padding: 15px;
-  box-shadow: 0 2px 8px rgba(200, 200, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(200, 200, 255, 0.2);
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .ciclo h2 {
-  background-color: #d2e9f9;
+  background-color: #ffe0f0;
+  color: #c2416e;
   padding: 10px;
   border-radius: 15px;
   text-align: center;
   font-size: 1.1em;
-  color: #014e78;
-  margin-bottom: 10px;
 }
 
 .curso {
-  background-color: #b6e2f5;
-  padding: 8px 10px;
-  border-radius: 10px;
+  background-color: #cbefff;
+  padding: 10px;
+  border-radius: 12px;
   text-align: center;
-  font-size: 0.95em;
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border: 1.5px solid #a5d2ec;
+  transition: transform 0.2s;
+  border: 1.5px solid #a3d7f5;
 }
 
 .curso:hover {
-  transform: scale(1.02);
-  box-shadow: 0 2px 5px rgba(0, 0, 50, 0.1);
+  transform: scale(1.03);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .curso.aprobado {
   opacity: 0.5;
   text-decoration: line-through;
   font-style: italic;
-  background-color: #c9eaf5;
-  color: #5c5c5c;
+  background-color: #e4f6fa;
+  color: #666;
 }
 
-/* Estilo para todos los bloqueados */
 .curso.bloqueado {
   pointer-events: none;
   background-color: #eeeeee;
-  color: #aaaaaa;
+  color: #bbbbbb;
   border: 1.5px solid #dddddd;
   opacity: 0.6;
 }
 
-/* Estilo específico para cursos destacados (con asterisco) */
 .curso.destacado {
-  background-color: #7ed2ec;
+  background-color: #97dbf2;
   font-weight: bold;
-  color: #003f5c;
+  color: #043f5e;
 }
 
-/* Cuando el curso es destacado Y está bloqueado, que se vea diferente */
 .curso.destacado.bloqueado {
-  background-color: #f8d6e6;
-  color: #a45787;
-  opacity: 0.6;
+  background-color: #d3f2fa;
+  opacity: 0.5;
+  color: #8c9aa1;
 }
