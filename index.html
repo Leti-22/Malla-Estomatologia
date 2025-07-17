@@ -1,96 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malla Curricular de Estomatología</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Malla Curricular de Estomatología</h1>
-  <div class="malla">
-    <!-- Aquí van los 10 ciclos con cursos -->
-    <div class="ciclo">
-      <h2>1° Ciclo</h2>
-      <div id="pensamiento" class="curso">Pensamiento Lógico</div>
-      <div id="comunicativas" class="curso">Habilidades Comunicativas</div>
-      <div id="ods" class="curso">Objetivos de Desarrollo Sostenible</div>
-      <div id="salud_publica" class="curso destacado">*Introducción a la Salud Pública</div>
-      <div id="ingles1" class="curso">Inglés I</div>
-      <div id="compu1" class="curso">Computación I</div>
+  <h1 class="titulo">Malla Curricular de Estomatología</h1>
+  <div class="contenedor-malla">
+    <!-- Ciclos y cursos -->
+    <!-- Cada ciclo es una columna -->
+    <div class="ciclo" data-ciclo="1">
+      <h2>1º Ciclo</h2>
+      <div class="curso" data-id="pensamiento">Pensamiento Lógico</div>
+      <div class="curso" data-id="comunicacion">Habilidades Comunicativas</div>
+      <div class="curso" data-id="ods">Objetivos de Desarrollo Sostenible</div>
+      <div class="curso destacado" data-id="salud-publica">*Introducción a la Salud Pública</div>
+      <div class="curso" data-id="ingles1" data-desbloquea="ingles2">Inglés I</div>
+      <div class="curso" data-id="computacion1" data-desbloquea="discapacidad,computacion2">Computación I</div>
     </div>
-    <div class="ciclo">
-      <h2>2° Ciclo</h2>
-      <div id="clima" class="curso">Cambio Climático y Gestión de Riesgos</div>
-      <div id="constitucion" class="curso">Constitución y Derechos Humanos</div>
-      <div id="vallejo" class="curso">Cátedra Vallejo</div>
-      <div id="discapacidad" class="curso destacado bloqueado">*Discapacidad y Educación en Salud</div>
-      <div id="ingles2" class="curso bloqueado">Inglés II</div>
-      <div id="compu2" class="curso bloqueado">Computación II</div>
+
+    <div class="ciclo" data-ciclo="2">
+      <h2>2º Ciclo</h2>
+      <div class="curso" data-id="cambio">Cambio Climático y Gestión de Riesgos</div>
+      <div class="curso" data-id="constitucion">Constitución y Derechos Humanos</div>
+      <div class="curso" data-id="vallejo">Cátedra Vallejo</div>
+      <div class="curso destacado bloqueado" data-id="discapacidad">*Discapacidad y Educación en Salud</div>
+      <div class="curso bloqueado" data-id="ingles2" data-desbloquea="ingles3">Inglés II</div>
+      <div class="curso bloqueado" data-id="computacion2" data-desbloquea="epidemiologia,computacion3">Computación II</div>
     </div>
-    <div class="ciclo">
-      <h2>3° Ciclo</h2>
-      <div id="creatividad" class="curso">Creatividad e Innovación</div>
-      <div id="filosofia" class="curso">Filosofía y Ética</div>
-      <div id="epidemiologia" class="curso destacado bloqueado">*Epidemiología</div>
-      <div id="estadistica" class="curso">Estadística y Análisis de Datos</div>
-      <div id="ingles3" class="curso bloqueado">Inglés III</div>
-      <div id="compu3" class="curso bloqueado">Computación III</div>
+
+    <div class="ciclo" data-ciclo="3">
+      <h2>3º Ciclo</h2>
+      <div class="curso" data-id="creatividad">Creatividad e Innovación</div>
+      <div class="curso" data-id="filosofia">Filosofía y Ética</div>
+      <div class="curso destacado bloqueado" data-id="epidemiologia">*Epidemiología</div>
+      <div class="curso" data-id="estadistica" data-desbloquea="investigacion">Estadística y Análisis de Datos</div>
+      <div class="curso bloqueado" data-id="ingles3" data-desbloquea="ingles4">Inglés III</div>
+      <div class="curso bloqueado" data-id="computacion3" data-desbloquea="patologia">Computación III</div>
     </div>
-    <div class="ciclo">
-      <h2>4° Ciclo</h2>
-      <div id="metodologia" class="curso bloqueado">Metodología de la Investigación Científica</div>
-      <div id="biologia" class="curso destacado">*Biología Celular, Molecular y Bioquímica</div>
-      <div id="morfo" class="curso destacado">*Morfofisiología Humana y Estomatológica</div>
-      <div id="patologia" class="curso destacado bloqueado">*Patología General y Estomatológica</div>
-      <div id="ingles4" class="curso bloqueado">Inglés IV</div>
+
+    <div class="ciclo" data-ciclo="4">
+      <h2>4º Ciclo</h2>
+      <div class="curso bloqueado" data-id="investigacion">Metodología de la Investigación Científica</div>
+      <div class="curso destacado" data-id="biologia" data-desbloquea="microbiologia">*Biología Celular, Molecular y Bioquímica</div>
+      <div class="curso destacado" data-id="morfofisiologia" data-desbloquea="radiologia">*Morfofisiología Humana y Estomatológica</div>
+      <div class="curso destacado bloqueado" data-id="patologia" data-desbloquea="clinica1">*Patología General y Estomatológica</div>
+      <div class="curso bloqueado" data-id="ingles4" data-desbloquea="ingles5">Inglés IV</div>
     </div>
-    <div class="ciclo">
-      <h2>5° Ciclo</h2>
-      <div id="microbiologia" class="curso destacado bloqueado">*Microbiología General y Estomatológica</div>
-      <div id="diagnostico" class="curso destacado bloqueado">*Diagnostico y Radiología Estomatológica</div>
-      <div id="farmacologia" class="curso destacado">*Farmacología General y Estomatológica</div>
-      <div id="restauradora" class="curso destacado">*Estomatología Restauradora y Oclusión</div>
-      <div id="ingles5" class="curso bloqueado">Inglés V</div>
+
+    <div class="ciclo" data-ciclo="5">
+      <h2>5º Ciclo</h2>
+      <div class="curso destacado bloqueado" data-id="microbiologia">*Microbiología General y Estomatológica</div>
+      <div class="curso destacado bloqueado" data-id="radiologia" data-desbloquea="clinica1">*Diagnostico y Radiología Estomatológica</div>
+      <div class="curso destacado" data-id="farmacologia" data-desbloquea="cirugia1">*Farmacología General y Estomatológica</div>
+      <div class="curso destacado" data-id="restauradora" data-desbloquea="protesis-fija">*Estomatología Restauradora y Oclusión</div>
+      <div class="curso bloqueado" data-id="ingles5" data-desbloquea="ingles6">Inglés V</div>
     </div>
-    <div class="ciclo">
-      <h2>6° Ciclo</h2>
-      <div id="clinica1" class="curso destacado bloqueado">*Clínica Integral del Adulto I</div>
-      <div id="cirugia1" class="curso destacado bloqueado">*Cirugía Bucal I</div>
-      <div id="protesis" class="curso destacado bloqueado">*Prótesis Fija</div>
-      <div id="electiva1" class="curso">Experiencia Curricular Electiva</div>
-      <div id="ingles6" class="curso bloqueado">Inglés VI</div>
+
+    <div class="ciclo" data-ciclo="6">
+      <h2>6º Ciclo</h2>
+      <div class="curso destacado bloqueado" data-id="clinica1" data-desbloquea="clinica2">*Clínica Integral del Adulto I</div>
+      <div class="curso destacado bloqueado" data-id="cirugia1" data-desbloquea="cirugia2">*Cirugía Bucal I</div>
+      <div class="curso destacado bloqueado" data-id="protesis-fija" data-desbloquea="odontogeriatria">*Prótesis Fija</div>
+      <div class="curso" data-id="electiva1">Experiencia Curricular Electiva</div>
+      <div class="curso bloqueado" data-id="ingles6" data-desbloquea="ingles7">Inglés VI</div>
     </div>
-    <div class="ciclo">
-      <h2>7° Ciclo</h2>
-      <div id="clinica2" class="curso destacado bloqueado">*Clínica Integral del Adulto II</div>
-      <div id="odontogeriatria" class="curso destacado bloqueado">*Odontogeriatría</div>
-      <div id="cirugia2" class="curso destacado bloqueado">*Cirugía Bucal II</div>
-      <div id="odontopediatria" class="curso destacado">*Odontopediatría</div>
-      <div id="ingles7" class="curso bloqueado">Inglés VII</div>
+
+    <div class="ciclo" data-ciclo="7">
+      <h2>7º Ciclo</h2>
+      <div class="curso destacado bloqueado" data-id="clinica2">*Clínica Integral del Adulto II</div>
+      <div class="curso destacado bloqueado" data-id="odontogeriatria" data-desbloquea="protesis-removible">*Odontogeriatría</div>
+      <div class="curso destacado bloqueado" data-id="cirugia2">*Cirugía Bucal II</div>
+      <div class="curso destacado" data-id="odontopediatria" data-desbloquea="clinica-nino">*Odontopediatría</div>
+      <div class="curso bloqueado" data-id="ingles7" data-desbloquea="ingles8">Inglés VII</div>
     </div>
-    <div class="ciclo">
-      <h2>8° Ciclo</h2>
-      <div id="protesis_rem" class="curso destacado bloqueado">*Prótesis Parcial Removible</div>
-      <div id="clinica_nino" class="curso destacado bloqueado">*Clínica Integral del Niño</div>
-      <div id="electiva2" class="curso">Experiencia Curricular Electiva</div>
-      <div id="proyecto" class="curso">Gestión de Proyectos</div>
-      <div id="ingles8" class="curso bloqueado">Inglés VIII</div>
+
+    <div class="ciclo" data-ciclo="8">
+      <h2>8º Ciclo</h2>
+      <div class="curso destacado bloqueado" data-id="protesis-removible">*Prótesis Parcial Removible</div>
+      <div class="curso destacado bloqueado" data-id="clinica-nino">*Clínica Integral del Niño</div>
+      <div class="curso" data-id="electiva2">Experiencia Curricular Electiva</div>
+      <div class="curso" data-id="gestion">Gestión de Proyectos</div>
+      <div class="curso bloqueado" data-id="ingles8" data-desbloquea="ingles9">Inglés VIII</div>
     </div>
-    <div class="ciclo">
-      <h2>9° Ciclo</h2>
-      <div id="proyecto_inv" class="curso">Proyecto de Investigación</div>
-      <div id="internado1" class="curso destacado">*Internado I</div>
-      <div id="ingles9" class="curso bloqueado">Inglés IX</div>
+
+    <div class="ciclo" data-ciclo="9">
+      <h2>9º Ciclo</h2>
+      <div class="curso" data-id="proyecto" data-desbloquea="desarrollo">Proyecto de Investigación</div>
+      <div class="curso destacado" data-id="internado1" data-desbloquea="internado2">*Internado I</div>
+      <div class="curso bloqueado" data-id="ingles9" data-desbloquea="ingles10">Inglés IX</div>
     </div>
-    <div class="ciclo">
-      <h2>10° Ciclo</h2>
-      <div id="desarrollo" class="curso bloqueado">Desarrollo del Proyecto de Investigación</div>
-      <div id="internado2" class="curso destacado bloqueado">*Internado II</div>
-      <div id="ingles10" class="curso bloqueado">Inglés X</div>
+
+    <div class="ciclo" data-ciclo="10">
+      <h2>10º Ciclo</h2>
+      <div class="curso bloqueado" data-id="desarrollo">Desarrollo del Proyecto de Investigación</div>
+      <div class="curso destacado bloqueado" data-id="internado2">*Internado II</div>
+      <div class="curso bloqueado" data-id="ingles10">Inglés X</div>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
