@@ -28,19 +28,20 @@ const dependencias = {
   ingles10: ["ingles9"],
 };
 
+// Inicializa
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".curso").forEach(curso => {
-    curso.classList.add("bloqueado");
+    if (!curso.classList.contains("bloqueado")) {
+      curso.addEventListener("click", () => toggleCurso(curso.id));
+    }
   });
 
-  const desbloqueadosIniciales = [
-    "pensamiento", "comunicativas", "ods", "salud_publica",
-    "ingles1", "compu1"
-  ];
-  desbloqueadosIniciales.forEach(id => desbloquear(id));
-
+  // Desbloquear cursos sin prerrequisitos
+  const cursosConDependencias = new Set(Object.values(dependencias).flat());
   document.querySelectorAll(".curso").forEach(curso => {
-    curso.addEventListener("click", () => toggleCurso(curso.id));
+    if (!cursosConDependencias.has(curso.id)) {
+      curso.classList.remove("bloqueado");
+    }
   });
 });
 
@@ -57,22 +58,26 @@ function toggleCurso(id) {
   }
 }
 
-function desbloquear(id) {
-  const curso = document.getElementById(id);
-  if (curso) curso.classList.remove("bloqueado");
+function desbloquear(cursoID) {
+  const curso = document.getElementById(cursoID);
+  if (curso && curso.classList.contains("bloqueado")) {
+    curso.classList.remove("bloqueado");
+    curso.addEventListener("click", () => toggleCurso(cursoID));
+  }
 }
 
-function bloquear(id) {
-  const curso = document.getElementById(id);
+function bloquear(cursoID) {
+  const curso = document.getElementById(cursoID);
   if (curso && !curso.classList.contains("aprobado")) {
     curso.classList.add("bloqueado");
+    curso.removeEventListener("click", () => toggleCurso(cursoID));
   }
 }
 
 function desbloquearDependientes(id) {
-  for (const [curso, requisitos] of Object.entries(dependencias)) {
-    if (requisitos.includes(id)) {
-      const puedeDesbloquear = requisitos.every(req =>
+  for (const [curso, prereqs] of Object.entries(dependencias)) {
+    if (prereqs.includes(id)) {
+      const puedeDesbloquear = prereqs.every(req =>
         document.getElementById(req).classList.contains("aprobado")
       );
       if (puedeDesbloquear) desbloquear(curso);
@@ -81,10 +86,10 @@ function desbloquearDependientes(id) {
 }
 
 function bloquearDependientes(id) {
-  for (const [curso, requisitos] of Object.entries(dependencias)) {
-    if (requisitos.includes(id)) {
+  for (const [curso, prereqs] of Object.entries(dependencias)) {
+    if (prereqs.includes(id)) {
       bloquear(curso);
-      bloquearDependientes(curso);
+      bloquearDependientes(curso); // cascada
     }
   }
 }
