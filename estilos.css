@@ -1,73 +1,83 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: #eaf6ff;
   margin: 0;
-  padding: 1rem;
-  color: #003049;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f8ff;
+  color: #333;
 }
 
 h1 {
   text-align: center;
-  color: #d6336c;
-  margin-bottom: 2rem;
+  margin-top: 20px;
+  font-size: 2em;
+  color: #d66aa0;
 }
 
 .malla {
   display: flex;
-  gap: 1rem;
+  flex-direction: row;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  padding: 20px;
+  gap: 20px;
+  justify-content: flex-start;
 }
 
 .ciclo {
-  background: #fff;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  min-width: 230px;
-  flex-shrink: 0;
+  background-color: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  min-width: 220px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(200, 200, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .ciclo h2 {
+  background-color: #d2e9f9;
+  padding: 10px;
+  border-radius: 15px;
   text-align: center;
-  background-color: #cce7f8;
-  padding: 0.5rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  color: #003049;
+  font-size: 1.1em;
+  color: #014e78;
+  margin-bottom: 10px;
 }
 
 .curso {
-  background: #f3faff;
-  border: 1px solid #bde0fe;
-  padding: 0.6rem;
-  border-radius: 8px;
-  margin: 0.4rem 0;
+  background-color: #b6e2f5;
+  padding: 8px 10px;
+  border-radius: 10px;
   text-align: center;
+  font-size: 0.95em;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: all 0.2s ease-in-out;
+  border: 1.5px solid #a5d2ec;
 }
 
 .curso:hover {
-  background: #d0f0ff;
+  transform: scale(1.02);
+  box-shadow: 0 2px 5px rgba(0, 0, 50, 0.1);
 }
 
 .curso.aprobado {
-  opacity: 0.6;
+  opacity: 0.5;
   text-decoration: line-through;
   font-style: italic;
+  background-color: #c9eaf5;
+  color: #5c5c5c;
 }
 
 .curso.bloqueado {
-  background: #eee;
-  color: #aaa;
-  border: 1px dashed #ccc;
   pointer-events: none;
-  cursor: default;
+  background-color: #eeeeee;
+  color: #aaaaaa;
+  border: 1.5px solid #dddddd;
 }
 
 .curso.destacado {
-  background: #8ecae6;
-  color: #003049;
+  background-color: #7ed2ec;
   font-weight: bold;
+  color: #003f5c;
 }
