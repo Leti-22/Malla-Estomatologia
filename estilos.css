@@ -83,3 +83,9 @@ h1 {
   opacity: 0.5;
   color: #8c9aa1;
 }
+
+.curso.destacado.bloqueado {
+  background-color: #d3f2fa;
+  opacity: 0.5;
+  color: #8c9aa1;
+}
