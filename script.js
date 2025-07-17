@@ -1,4 +1,4 @@
-// Dependencias de cada curso
+// Dependencias entre cursos
 const dependencias = {
   ingles2: ["ingles1"],
   discapacidad: ["compu1"],
@@ -27,8 +27,7 @@ const dependencias = {
   internado2: ["internado1"],
   ingles9: ["ingles8"],
   ingles10: ["ingles9"],
-
-  // Dummies para prevenir desbloqueo automático
+  // Nodos dummy para bloquear inicio incorrecto
   biologia: ["biologia_dummy"],
   morfofisiologia: ["morfo_dummy"],
   farmacologia: ["farmaco_dummy"],
@@ -36,41 +35,46 @@ const dependencias = {
   odontopediatria: ["odonto_dummy"],
   estadistica: ["estad_dummy"],
   proyecto: ["proyecto_dummy"],
-  internado1: ["internado_dummy"],
+  internado1: ["internado_dummy"]
 };
 
-// Cursos dummy que no existen en el DOM
+// Cursos dummy (no visibles, solo para control de flujo)
 const cursosDummy = [
-  "biologia_dummy", "morfo_dummy", "farmaco_dummy", "resta_dummy",
-  "odonto_dummy", "estad_dummy", "proyecto_dummy", "internado_dummy"
+  "biologia_dummy",
+  "morfo_dummy",
+  "farmaco_dummy",
+  "resta_dummy",
+  "odonto_dummy",
+  "estad_dummy",
+  "proyecto_dummy",
+  "internado_dummy"
 ];
 
+// Al cargar la página
 window.addEventListener("DOMContentLoaded", () => {
-  const todosLosCursos = document.querySelectorAll(".curso");
-
-  // Bloquear todos los cursos al inicio
-  todosLosCursos.forEach(curso => curso.classList.add("bloqueado"));
-
-  // Asignar eventos de clic
-  todosLosCursos.forEach(curso => {
-    curso.addEventListener("click", () => toggleCurso(curso.id));
+  // Bloquear todos inicialmente
+  document.querySelectorAll(".curso").forEach(curso => {
+    curso.classList.add("bloqueado");
   });
 
-  // Desbloquear cursos sin dependencias
-  const todosIds = Array.from(todosLosCursos).map(c => c.id);
+  // Desbloquear automáticamente los que no tienen dependencias reales
+  const todosIds = Array.from(document.querySelectorAll(".curso")).map(c => c.id);
   const cursosConDependencias = new Set(Object.keys(dependencias));
   const cursosSinDependencias = todosIds.filter(id => !cursosConDependencias.has(id));
-
   cursosSinDependencias.forEach(id => desbloquear(id));
+
+  // Activar clicks
+  document.querySelectorAll(".curso").forEach(curso => {
+    curso.addEventListener("click", () => toggleCurso(curso.id));
+  });
 });
 
+// Función para aprobar/desaprobar
 function toggleCurso(id) {
   const curso = document.getElementById(id);
-  if (curso.classList.contains("bloqueado")) return;
+  const aprobado = curso.classList.contains("aprobado");
 
-  const estaAprobado = curso.classList.contains("aprobado");
-
-  if (estaAprobado) {
+  if (aprobado) {
     curso.classList.remove("aprobado");
     bloquearDependientes(id);
   } else {
@@ -86,28 +90,27 @@ function desbloquear(id) {
 
 function bloquear(id) {
   const curso = document.getElementById(id);
-  if (curso && !curso.classList.contains("aprobado")) {
-    curso.classList.add("bloqueado");
-  }
+  if (curso && !curso.classList.contains("aprobado")) curso.classList.add("bloqueado");
 }
 
+// Desbloquear cursos que dependan del actual (si se cumplen todos)
 function desbloquearDependientes(id) {
   for (const [curso, requisitos] of Object.entries(dependencias)) {
     if (requisitos.includes(id)) {
-      const puedeDesbloquear = requisitos.every(req => {
-        const el = document.getElementById(req);
-        return el && el.classList.contains("aprobado");
-      });
+      const puedeDesbloquear = requisitos.every(req =>
+        document.getElementById(req)?.classList.contains("aprobado")
+      );
       if (puedeDesbloquear) desbloquear(curso);
     }
   }
 }
 
+// Bloquear dependientes en cascada al desaprobar
 function bloquearDependientes(id) {
   for (const [curso, requisitos] of Object.entries(dependencias)) {
     if (requisitos.includes(id)) {
       bloquear(curso);
-      bloquearDependientes(curso); // Recursivo en cascada
+      bloquearDependientes(curso); // en cascada
     }
   }
 }
