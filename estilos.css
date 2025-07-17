@@ -1,70 +1,100 @@
+/* Fondo general */
 body {
-  background-color: #d0eaff;
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #d0e6f9; /* fondo azul celeste claro */
+  color: #1a1a1a;
 }
 
-.titulo {
+/* Título */
+h1 {
   text-align: center;
+  padding: 20px 0;
+  background-color: #a9d7f7; /* celeste más fuerte */
   color: #003366;
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
+  margin: 0;
+  font-size: 2em;
+  border-bottom: 4px solid #f7cde2; /* rosa pastel */
 }
 
-.contenedor-malla {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 1rem;
+/* Contenedor de todos los ciclos */
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
+  gap: 20px;
 }
 
-.columna-ciclo {
+/* Columna por ciclo */
+.ciclo {
+  flex: 0 0 auto;
+  min-width: 220px;
   background: #ffffff;
+  border: 2px solid #b3e0f2;
   border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 85, 170, 0.1);
 }
 
-.columna-ciclo h2 {
+.ciclo h2 {
   text-align: center;
-  color: #0077b6;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.ramo {
-  background-color: #b3e5fc;
-  color: #003049;
+  background-color: #e0f4fd;
+  padding: 10px;
   border-radius: 8px;
-  padding: 0.6rem;
-  margin-bottom: 0.6rem;
-  cursor: pointer;
-  transition: 0.2s;
+  margin: -10px -10px 15px;
+  color: #005577;
+  font-size: 1.1em;
+}
+
+/* Curso común */
+.curso {
+  padding: 10px;
+  background-color: #cdeefd; /* celeste pastel */
+  border-radius: 8px;
+  margin-bottom: 10px;
   text-align: center;
-  border: 1px solid #90caf9;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 1px solid #7dc7e8;
 }
 
-.ramo:hover {
-  background-color: #81d4fa;
+/* Hover sobre curso disponible */
+.curso:not(.bloqueado):hover {
+  background-color: #a4ddf5;
+  transform: scale(1.02);
 }
 
-.destacado {
-  font-weight: bold;
-  color: #01497c;
-  background-color: #a8dadc;
-  border: 2px solid #457b9d;
-}
-
-.aprobado {
-  background-color: #a5d8ff;
-  opacity: 0.6;
-  text-decoration: line-through;
+/* Curso aprobado */
+.curso.aprobado {
+  opacity: 0.5;
   font-style: italic;
-  pointer-events: none;
+  text-decoration: line-through;
+  background-color: #b8e1f2;
 }
 
-.bloqueado {
-  background-color: #e0e0e0;
-  color: #999;
-  pointer-events: none;
+/* Curso bloqueado */
+.curso.bloqueado {
+  background-color: #eee;
+  color: #888;
+  cursor: not-allowed;
+  border: 1px dashed #ccc;
+}
+
+/* Curso destacado (*) */
+.curso.destacado {
+  background-color: #75c8e8; /* celeste más oscuro */
+  font-weight: bold;
+  color: #003355;
+  border: 2px solid #62b8d6;
+}
+
+/* Scroll horizontal */
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #aad5ef;
+  border-radius: 4px;
 }
