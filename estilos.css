@@ -1,4 +1,4 @@
-body {
+body { 
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -76,8 +76,18 @@ h1 {
   border: 1.5px solid #dddddd;
 }
 
+/* Cursos destacados (normal) */
 .curso.destacado {
   background-color: #7ed2ec;
   font-weight: bold;
   color: #003f5c;
+}
+
+/* Cursos destacados bloqueados */
+.curso.destacado.bloqueado {
+  background-color: #d4edf5;
+  color: #888888;
+  opacity: 0.5;
+  pointer-events: none;
+  border: 1.5px solid #cccccc;
 }
