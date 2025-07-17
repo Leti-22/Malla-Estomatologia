@@ -1,100 +1,71 @@
-/* Fondo general */
 body {
-  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #d0e6f9; /* fondo azul celeste claro */
-  color: #1a1a1a;
+  background-color: #e6f2ff;
+  margin: 0;
+  padding: 20px;
 }
 
-/* Título */
 h1 {
   text-align: center;
-  padding: 20px 0;
-  background-color: #a9d7f7; /* celeste más fuerte */
-  color: #003366;
-  margin: 0;
-  font-size: 2em;
-  border-bottom: 4px solid #f7cde2; /* rosa pastel */
+  color: #ff99cc;
+  font-size: 2rem;
 }
 
-/* Contenedor de todos los ciclos */
-.container {
+.malla {
   display: flex;
-  flex-wrap: nowrap;
+  gap: 15px;
   overflow-x: auto;
-  padding: 20px;
-  gap: 20px;
+  padding: 20px 0;
 }
 
-/* Columna por ciclo */
 .ciclo {
-  flex: 0 0 auto;
-  min-width: 220px;
-  background: #ffffff;
-  border: 2px solid #b3e0f2;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 85, 170, 0.1);
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 10px;
+  min-width: 180px;
+  flex-shrink: 0;
 }
 
 .ciclo h2 {
   text-align: center;
-  background-color: #e0f4fd;
+  background-color: #cceeff;
+  border-radius: 12px;
   padding: 10px;
-  border-radius: 8px;
-  margin: -10px -10px 15px;
   color: #005577;
-  font-size: 1.1em;
+  font-size: 1.1rem;
+  margin: 0 0 10px;
 }
 
-/* Curso común */
 .curso {
-  padding: 10px;
-  background-color: #cdeefd; /* celeste pastel */
-  border-radius: 8px;
-  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 6px 0;
   text-align: center;
   cursor: pointer;
-  transition: 0.3s ease;
-  border: 1px solid #7dc7e8;
+  transition: all 0.3s ease;
+  border: 1px dashed #bbb;
 }
 
-/* Hover sobre curso disponible */
-.curso:not(.bloqueado):hover {
-  background-color: #a4ddf5;
-  transform: scale(1.02);
+.curso:hover {
+  background-color: #e0f7fa;
 }
 
-/* Curso aprobado */
 .curso.aprobado {
-  opacity: 0.5;
-  font-style: italic;
-  text-decoration: line-through;
-  background-color: #b8e1f2;
+  text-decoration: line-through italic;
+  color: #87bdd8;
+  opacity: 0.6;
 }
 
-/* Curso bloqueado */
 .curso.bloqueado {
+  pointer-events: none;
   background-color: #eee;
-  color: #888;
-  cursor: not-allowed;
-  border: 1px dashed #ccc;
+  color: #bbb;
 }
 
-/* Curso destacado (*) */
-.curso.destacado {
-  background-color: #75c8e8; /* celeste más oscuro */
+.destacado {
+  background-color: #99d6f9;
   font-weight: bold;
-  color: #003355;
-  border: 2px solid #62b8d6;
-}
-
-/* Scroll horizontal */
-.container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.container::-webkit-scrollbar-thumb {
-  background: #aad5ef;
-  border-radius: 4px;
+  color: #004466;
 }
