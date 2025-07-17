@@ -1,50 +1,77 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5faff;
-  color: #333;
+  background-color: #f7f9fb;
   padding: 20px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  color: #48bfe3;
+  margin-bottom: 20px;
 }
 
-.ciclo {
-  margin-bottom: 40px;
+.contenedor-malla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.ciclo h2 {
-  color: #0077b6;
-  margin-bottom: 10px;
+.semestre {
+  min-width: 220px;
+  background-color: #ffeefc;
+  border: 2px solid #48bfe3;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.curso {
-  background-color: #b3e5fc; /* Celeste pastel */
-  border: 2px solid #81d4fa;
+.semestre h2 {
+  text-align: center;
+  color: #48bfe3;
+  font-size: 1.1em;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #a5d8ff;
+  padding-bottom: 6px;
+}
+
+.ramo {
+  background: #caf0f8;
+  border: 1px solid #90e0ef;
   border-radius: 8px;
   padding: 10px;
-  margin: 5px 0;
+  margin-bottom: 8px;
+  text-align: center;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: bold;
+  color: #0077b6;
+  transition: all 0.3s ease;
 }
 
-.curso.especial {
-  background-color: #4fc3f7; /* Celeste oscuro para cursos con asterisco */
-  border-color: #0288d1;
+.ramo:hover {
+  background: #ade8f4;
+  transform: scale(1.02);
+}
+
+.ramo.asterisco {
+  background: #48cae4;
   color: white;
 }
 
-.curso.aprobado {
-  background-color: #b3e5fc;
-  opacity: 0.5;
-  pointer-events: auto;
+.ramo.bloqueado {
+  background: #f3f3f3;
+  color: #aaa;
+  border-style: dashed;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
-.curso.bloqueado {
-  background-color: #e0e0e0;
-  border-color: #ccc;
-  color: #aaa;
-  cursor: not-allowed;
-  pointer-events: none;
+.ramo.aprobado {
+  background: #dbeff2;
+  color: #4a4a4a;
+  border-color: #a0c4ff;
+  text-decoration: line-through;
+  font-style: italic;
+  opacity: 0.6;
+  cursor: pointer;
 }
